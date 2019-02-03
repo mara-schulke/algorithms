@@ -10,7 +10,7 @@ fn main() {
 
     println!("unsorted {:?}", random_array);
 
-    sort::bubble_sort::<u8>(&mut random_array);
+    sort::bubble_sort(&mut random_array);
 
     println!("sorted {:?}", random_array);
 }
