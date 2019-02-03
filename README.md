@@ -1,2 +1,2 @@
 # algorithms
-All search and sort algorithms implemented in rust.
+Implementation of the most famous sorting algorithms in rust.
