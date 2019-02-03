@@ -1,5 +1,16 @@
-mod sorting;
+extern crate rand;
+
+use rand::Rng;
+
+mod sort;
 
 fn main() {
-    // sorting::bubble_sort();
+    /* gen an array containing random numbers */
+    let mut random_array: [u8; 20] = rand::thread_rng().gen();
+
+    println!("unsorted {:?}", random_array);
+
+    sort::bubble_sort::<u8>(&mut random_array);
+
+    println!("sorted {:?}", random_array);
 }
