@@ -3,7 +3,7 @@
 Implementation of the most famous sorting algorithms in rust. 
 
 #### Table of Contents
-- Bubble Sort [not-implemented-yet]
+- Bubble Sort
 - Bucket Sort [not-implemented-yet]
 - Counting Sort [not-implemented-yet]
 - Heap Sort [not-implemented-yet]
