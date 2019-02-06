@@ -1,8 +1,16 @@
 # algorithms
 
-Implementation of the most famous sorting algorithms in rust. 
+Implementation of the most famous algorithms in rust. 
 
 #### Table of Contents
+- Sort Algorithms
+- Search Algorithms
+- Data Structures
+<!-- - Mathematical Algorithms -->
+
+
+#### Sort Algorithms
+
 - Bubble Sort
 - Bucket Sort [not-implemented-yet]
 - Counting Sort
