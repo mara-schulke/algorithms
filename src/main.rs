@@ -1,7 +1,7 @@
 extern crate rand;
 
 use rand::Rng;
-use std::u8::MAX;
+// use std::u8::MAX;
 
 mod sort;
 
@@ -11,7 +11,7 @@ fn main() {
 
 	println!("unsorted {:?}", random_array);
 
-	sort::counting_sort(&mut random_array, MAX as usize);
+	sort::insertion_sort(&mut random_array);
 
 	println!("sorted {:?}", random_array);
 }
