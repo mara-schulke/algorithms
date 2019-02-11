@@ -11,7 +11,7 @@ fn main() {
 
 	println!("unsorted {:?}", random_array);
 
-	sort::insertion_sort(&mut random_array);
+	sort::gnome_sort(&mut random_array);
 
 	println!("sorted {:?}", random_array);
 }
