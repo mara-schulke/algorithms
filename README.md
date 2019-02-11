@@ -14,9 +14,9 @@ Implementation of the most famous algorithms in rust.
 - Bubble Sort
 - Bucket Sort [not-implemented-yet]
 - Counting Sort
-- Gnome Sort [not-implemented-yet]
+- Gnome Sort
 - Heap Sort [not-implemented-yet]
-- Insertion Sort [not-implemented-yet]
+- Insertion Sort
 - Merge Sort [not-implemented-yet]
 - Quick Sort [not-implemented-yet]
 - Radix Sort [not-implemented-yet]
