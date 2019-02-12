@@ -20,6 +20,6 @@ Implementation of the most famous algorithms in rust.
 - Merge Sort [not-implemented-yet]
 - Quick Sort [not-implemented-yet]
 - Radix Sort [not-implemented-yet]
-- Selection Sort [not-implemented-yet]
+- Selection Sort
 - Shell Sort [not-implemented-yet]
 - Slow Sort [not-implemented-yet]
