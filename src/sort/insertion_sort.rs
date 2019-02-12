@@ -2,12 +2,12 @@
 #[allow(unused_variables)]
 pub fn insertion_sort(arr: &mut [u8]) {
 	for i in 1..arr.len() {
-		let mut j: u16 = i as u16;
+		let mut j: usize = i;
 
-		while j > 0 && arr[j as usize] < arr[(j - 1) as usize] {
-			let temp = arr[j as usize];
-			arr[j as usize] = arr[(j - 1) as usize];
-			arr[(j - 1) as usize] = temp;
+		while j > 0 && arr[j] < arr[j - 1] {
+			let temp = arr[j];
+			arr[j] = arr[j - 1];
+			arr[j - 1] = temp;
 
 			j -= 1;
 		}
