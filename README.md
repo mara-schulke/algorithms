@@ -4,8 +4,8 @@ Implementation of the most famous algorithms in rust.
 
 #### Table of Contents
 - Sort Algorithms
-- Search Algorithms
-- Data Structures
+- Search Algorithms [not-implemented-yet]
+- Data Structures [not-implemented-yet]
 <!-- - Mathematical Algorithms -->
 
 
