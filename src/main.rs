@@ -3,7 +3,7 @@ extern crate rand;
 use rand::Rng;
 // use std::u8::MAX;
 
-mod sort;
+mod sorting;
 
 fn main() {
 	/* gen an array containing random numbers */
@@ -11,7 +11,7 @@ fn main() {
 
 	println!("unsorted {:?}", random_array);
 
-	sort::gnome_sort(&mut random_array);
+	sorting::quick_sort(&mut random_array);
 
 	println!("sorted {:?}", random_array);
 }
