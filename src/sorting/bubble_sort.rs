@@ -8,9 +8,7 @@ pub fn bubble_sort(arr: &mut [u8]) {
             if arr[i] > arr[i + 1] {
                 swapped = true;
 
-                let temp = arr[i];
-                arr[i] = arr[i + 1];
-                arr[i + 1] = temp;
+                arr.swap(i, i + 1);
             }
         }
 
