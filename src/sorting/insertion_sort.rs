@@ -5,9 +5,7 @@ pub fn insertion_sort(arr: &mut [u8]) {
 		let mut j: usize = i;
 
 		while j > 0 && arr[j] < arr[j - 1] {
-			let temp = arr[j];
-			arr[j] = arr[j - 1];
-			arr[j - 1] = temp;
+			arr.swap(j, j - 1);
 
 			j -= 1;
 		}

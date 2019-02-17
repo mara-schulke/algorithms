@@ -7,9 +7,7 @@ pub fn gnome_sort(arr: &mut [u8]) {
         if arr[i - 1] <= arr[i] {
             i += 1;
         } else {
-            let temp = arr[i - 1];
-            arr[i - 1] = arr[i];
-            arr[i] = temp;
+            arr.swap(i, i - 1);
 
             i -= 1;
 
