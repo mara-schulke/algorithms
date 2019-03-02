@@ -6,12 +6,12 @@ use rand::Rng;
 mod sorting;
 
 fn main() {
-	/* gen an array containing random numbers */
-	let mut random_array: [u8; 20] = rand::thread_rng().gen();
+    /* gen an array containing random numbers */
+    let mut random_array: [u8; 20] = rand::thread_rng().gen();
 
-	println!("unsorted {:?}", random_array);
+    println!("unsorted {:?}", random_array);
 
-	sorting::quick_sort(&mut random_array);
+    sorting::quick_sort(&mut random_array);
 
-	println!("sorted {:?}", random_array);
+    println!("sorted {:?}", random_array);
 }
