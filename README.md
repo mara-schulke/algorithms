@@ -24,3 +24,8 @@ I challanged myself to implement the most famous algorithms in rust.
 - [Selection Sort]()
 - [Shell Sort]() [not-implemented-yet]
 - [Slow Sort]() [not-implemented-yet]
+
+
+#### Bubble Sort
+
+<img src="./docs/insertion.gif" />
