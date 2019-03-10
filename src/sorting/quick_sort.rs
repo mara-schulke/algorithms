@@ -1,65 +1,72 @@
 #[allow(dead_code)]
 #[allow(unused_variables)]
 pub fn quick_sort(arr: &mut [u8]) {
-    let len: usize = arr.len();
+    let len = arr.len() - 1;
 
-    if len <= 1 {
-        return;
-    }
-
-    let pivot: usize = len / 2;
-
-    let mut greater: Vec<u8> = vec![];
-    let mut smaller: Vec<u8> = vec![];
-
-    for (index, element) in arr.iter().enumerate() {
-        if index == (len / 2) {
-            continue;
-        }
-
-        if element > &arr[pivot] {
-            greater.push(*element);
-        } else {
-            smaller.push(*element);
-        }
-    }
-
-    // quick_sort(&mut smaller);
-    // quick_sort(&mut greater);
-
-    {
-        println!("SMALLER {:?}", smaller);
-        println!("PIVOT {:?}", arr[pivot]);
-        println!("GREATER {:?}", greater);
-        println!("");
-    }
-
-    // let mut i: usize = 0;
-
-    // while i < smaller.len() {
-    //     arr[i] = smaller[i];
-    //     i += 1;
-    // }
-
-    // skip the pivot
-    // i += 1;
-
-    // while i < greater.len() {
-    //     arr[i] = smaller[i];
-    //     i += 1;
-    // }
-
-    // println!("{:?}", greater);
-    // println!("{:?}", smaller);
-
-    // [ element for element in ARRAY[1:] if element > PIVOT ]
-
-    // LESSER = [ element for element in ARRAY[1:] if element <= PIVOT ]
-    // return quick_sort(LESSER) + [PIVOT] + quick_sort(GREATER)
+    qs(arr, 0, len as isize);
 }
 
-// fn partition(arr: &mut [u8], lower: usize, upper: usize) {}
+fn qs(arr: &mut [u8], low: isize, high: isize) {
+    if low < high {
+        let pivot: isize = partition(arr, low, high);
 
-// fn qs(arr: &mut [u8], lower: usize, upper: usize) {
-//     if lower < upper {}
-// }
+        qs(arr, low, pivot - 1);
+        qs(arr, pivot + 1, high);
+    }
+}
+
+fn partition(arr: &mut [u8], low: isize, high: isize) -> isize {
+    let mut i: isize = low as isize - 1;
+
+    for j in 0..high - 1 {
+        if arr[j as usize] <= arr[high as usize] {
+            i += 1;
+            arr.swap(i as usize, j as usize);
+        }
+    }
+    println!("High{} Low{}", high, low);
+
+    arr.swap((i + 1) as usize, high as usize);
+
+    i + 1
+}
+
+/*
+int Partition (int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low -1);
+
+    for (int j = low; j <= (high - 1); j++) {
+        if (arr[j] <= pivot) {
+            i++;
+            Swap (&arr[i], &arr[j]);
+        }
+    }
+
+    Swap(&arr[i + 1], &arr[high]);
+
+    return (i + 1);
+}
+
+void QuickSort(int arr[], int low, int high)
+{
+    int pivot;
+
+    if (low < high) {
+        pivot = Partition(arr, low, high);
+        QuickSort(arr, low, pivot - 1);
+        QuickSort(arr, pivot + 1, high);
+    }
+}
+
+int main(int argc, char* argv[])
+{
+   /* Call Main sorting algo */
+QuickSort(arr, 0, count - 1);
+
+printf("Quick sorted array\n");
+PrintArray(arr, 0, count, NOPIVOT);
+return 0;
+}
+
+*/
