@@ -11,7 +11,7 @@ fn main() {
 
     println!("unsorted {:?}", random_array);
 
-    sorting::radix_sort(&mut random_array);
+    sorting::heap_sort(&mut random_array);
 
     println!("sorted {:?}", random_array);
 }
