@@ -13,16 +13,16 @@ I challanged myself to implement the most famous algorithms in rust.
 ## Sort Algorithms
 
 -   [Bubble Sort]()
-    <!-- -   [Bucket Sort]() [not-implemented-yet] -->
+    <!-- -   [Bucket Sort]() -->
 -   [Counting Sort]()
 -   [Gnome Sort]()
-    <!-- -   [Heap Sort]() [not-implemented-yet] -->
+    <!-- -   [Heap Sort]() -->
 -   [Insertion Sort]()
-    <!-- - [Merge Sort]() [not-implemented-yet]
-     -   [Quick Sort]() [not-implemented-yet] -->
+    <!-- - [Merge Sort]() -->
+-   [Quick Sort]()
 -   [Radix Sort]()
 -   [Selection Sort]()
-    <!-- - [Shell Sort]() [not-implemented-yet]
-    -   [Slow Sort]() [not-implemented-yet] -->
+    <!-- - [Shell Sort]()
+    -   [Slow Sort]() -->
 
 <!-- #### Bubble Sort -->

@@ -1,5 +1,3 @@
-#[allow(dead_code)]
-#[allow(unused_variables)]
 pub fn quick_sort(arr: &mut [u8]) {
     qs(arr, 0, (arr.len() - 1) as isize);
 }
