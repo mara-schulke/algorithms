@@ -7,7 +7,6 @@ mod insertion_sort;
 mod quick_sort;
 mod radix_sort;
 mod selection_sort;
-mod shaker_sort;
 mod shell_sort;
 mod slow_sort;
 
@@ -20,6 +19,5 @@ pub use self::insertion_sort::insertion_sort;
 pub use self::quick_sort::quick_sort;
 pub use self::radix_sort::radix_sort;
 pub use self::selection_sort::selection_sort;
-pub use self::shaker_sort::shaker_sort;
 pub use self::shell_sort::shell_sort;
 pub use self::slow_sort::slow_sort;

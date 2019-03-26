@@ -1,14 +1,12 @@
 # Algorithms
 
-I challanged myself to implement the most famous algorithms in rust.
+<!-- ## Table of Contents -->
 
-## Table of Contents
-
--   [Sorting Algorithms]()
-    <!-- -   [Search Algorithms]() [not-implemented-yet]
--   [Data Structures]() [not-implemented-yet] -->
-    <!-- - Mathematical Algorithms -->
-    <!-- - Compression Algorithms (e.g. GZIP) -->
+<!-- -   [Sorting Algorithms]() -->
+<!-- -  [Search Algorithms]() [not-implemented-yet] -->
+<!-- -   [Data Structures]() [not-implemented-yet] -->
+<!-- - Mathematical Algorithms -->
+<!-- - Compression Algorithms (e.g. GZIP) -->
 
 ## Sort Algorithms
 

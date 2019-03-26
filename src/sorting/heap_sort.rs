@@ -1,56 +1,44 @@
-#[allow(dead_code)]
-#[allow(unused_variables)]
-pub fn heap_sort(arr: &mut [u8]) {
-    let len = arr.len();
+//! not workin
 
-    for i in (0..len).rev() {
-        // heapify(arr, len, i);
+pub fn heap_sort(arr: &mut [u8]) {
+    if arr.len() <= 1 {
+        return; // already sorted
+    }
+
+    // for (i = n; i >= 2; i--)
+    // {
+    // 	temp = a[i];
+    // 	a[i] = a[1];
+    // 	a[1] = temp;
+    // 	max_heapify(a, 1, i - 1);
+    // }
+
+    for i in (arr.len()..2).rev() {
+        arr.swap(i, 1);
+
+        heapify(arr, 1, i - 1);
     }
 }
 
-// fn heapify(arr: &mut [u8], n: usize, i: usize) {
-//     let mut max: usize = i;
-//     let left: usize = 2 * i + 1;
-//     let right: usize = 2 * i + 2;
+/// Convert `arr` into a max heap.
+fn heapify(arr: &mut [u8], index: usize, heap_size: usize) {
+    let current = arr[index];
 
-//     if left < n && arr[max] < arr[left] {
-//         max = left;
-//     }
+    let mut left = 2 * index;
+    let mut right = 2 * index + 1;
 
-//     if right < n && arr[max] < arr[right] {
-//         max = right;
-//     }
+    while left <= heap_size {
+        if left < heap_size && arr[left] < arr[right] {
+            right += 1;
+        }
 
-//     if arr[max] != arr[i] {
-//         println!("swap");
-//         arr.swap(i, max);
-//         heapify(arr, n, max);
-//     }
-// }
+        if current > arr[left] {
+            break;
+        } else {
+            arr[left / 2] = arr[left];
+            left *= 2;
+        }
+    }
 
-// function​ ​maxHeapify​(arr, n, i) { ​
-// let​ max = i;
-// ​const​ left = ​2​ * i + ​1​;
-// const​ right = ​2​ * i + ​2​;
-
-// ​if​ (left < n && arr[max​][] < arr[​left​]) {
-// max = left;
-// }
-
-// ​if​ (right < n && arr[​max​] < arr[​right​]) {
-// max = right;
-// }
-
-// ​if​ (max !== i) {
-// [arr[​i​], arr[​max​]] = [arr[​max​], arr[​i​]]
-// maxHeapify(arr, n, max)
-// }
-
-// }
-
-// function​ ​makeHeap​(arr) {
-// ​const​ n = arr.length;
-// ​for​ (​let​ i=n- ​1​;i>= ​0​;i--){
-//      maxHeapify(arr, n, i);
-//   }
-// }
+    arr[left / 2] = current;
+}

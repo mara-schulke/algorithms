@@ -1,8 +1,10 @@
-extern crate rand;
 extern crate algorithms;
+extern crate rand;
 
 fn is_sorted(arr: &[u8]) -> bool {
-    if arr.is_empty() { return true; }
+    if arr.is_empty() {
+        return true;
+    }
 
     let mut prev = &arr[0];
 
@@ -41,6 +43,21 @@ mod bubble_sort {
         let mut arr = vec![1, 2, 3, 4, 5, 6];
 
         algorithms::sorting::bubble_sort(&mut arr);
+
+        assert!(super::is_sorted(&arr));
+    }
+}
+
+mod heap_sort {
+    #[test]
+    fn kek() {
+        let mut arr = vec![3, 124, 2, 53, 5, 4, 2, 6, 23, 124, 1, 43];
+
+        println!("{:?}", arr);
+
+        algorithms::sorting::heap_sort(&mut arr);
+
+        println!("{:?}", arr);
 
         assert!(super::is_sorted(&arr));
     }
