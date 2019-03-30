@@ -1,5 +1,3 @@
-#[allow(dead_code)]
-#[allow(unused_variables)]
 pub fn gnome_sort(arr: &mut [u8]) {
     let mut i: usize = 1;
 

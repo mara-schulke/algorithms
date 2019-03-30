@@ -1,5 +1,3 @@
-#[allow(dead_code)]
-#[allow(unused_variables)]
 pub fn radix_sort(arr: &mut [u8]) {
     let max: usize = arr.iter().cloned().fold(0, u8::max).to_string().len();
     let mut index: usize;

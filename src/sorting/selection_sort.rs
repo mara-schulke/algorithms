@@ -1,5 +1,3 @@
-#[allow(dead_code)]
-#[allow(unused_variables)]
 pub fn selection_sort(arr: &mut [u8]) {
     for i in 0..arr.len() - 1 {
         let mut index_of_minimum: usize = 0;

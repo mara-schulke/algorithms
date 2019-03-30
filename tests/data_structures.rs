@@ -1,6 +1,6 @@
 extern crate algorithms;
 
-use algorithms::data_structures::LinkedList;
+// use algorithms::data_structures::LinkedList;
 
 
 #[test]

@@ -1,5 +1,3 @@
-#[allow(dead_code)]
-#[allow(unused_variables)]
 pub fn bubble_sort(arr: &mut [u8]) {
     loop {
         let mut swapped: bool = false;

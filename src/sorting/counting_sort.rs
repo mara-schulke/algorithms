@@ -1,5 +1,3 @@
-#[allow(dead_code)]
-#[allow(unused_variables)]
 pub fn counting_sort(arr: &mut [u8], maxval: usize) {
     let mut occurences: Vec<u8> = vec![0; maxval + 1];
     let mut index: Vec<u8> = vec![0; maxval + 1];
