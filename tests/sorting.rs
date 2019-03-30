@@ -48,17 +48,17 @@ mod bubble_sort {
     }
 }
 
-mod heap_sort {
-    #[test]
-    fn kek() {
-        let mut arr = vec![3, 124, 2, 53, 5, 4, 2, 6, 23, 124, 1, 43];
+// mod heap_sort {
+//     #[test]
+//     fn kek() {
+//         let mut arr = vec![3, 124, 2, 53, 5, 4, 2, 6, 23, 124, 1, 43];
 
-        println!("{:?}", arr);
+//         println!("{:?}", arr);
 
-        algorithms::sorting::heap_sort(&mut arr);
+//         algorithms::sorting::heap_sort(&mut arr);
 
-        println!("{:?}", arr);
+//         println!("{:?}", arr);
 
-        assert!(super::is_sorted(&arr));
-    }
-}
+//         assert!(super::is_sorted(&arr));
+//     }
+// }
