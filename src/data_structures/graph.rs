@@ -1,8 +1,6 @@
 use std::ops::{Add, Sub};
 use uuid::Uuid;
 
-type 
-
 #[derive(Clone)]
 pub struct Graph<W: Add> {
 	vertices: Vec<Vertex>,
