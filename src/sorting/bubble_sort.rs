@@ -1,17 +1,17 @@
-pub fn bubble_sort(arr: &mut [u8]) {
-    loop {
-        let mut swapped: bool = false;
+pub fn bubble_sort<T: Ord>(arr: &mut [T]) {
+    let mut swapped: bool = true;
 
-        for i in 0..arr.len() - 1 {
-            if arr[i] > arr[i + 1] {
+    while swapped {
+        swapped = false;
+
+        for i in 1..arr.len() {
+            if arr[i - 1] > arr[i] {
                 swapped = true;
 
-                arr.swap(i, i + 1);
+                arr.swap(i - 1, i);
             }
-        }
-
-        if !swapped {
-            break;
         }
     }
 }
+
+crate::test_sort!(bubble_sort);
