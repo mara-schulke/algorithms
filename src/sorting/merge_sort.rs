@@ -1,56 +1,103 @@
-pub fn merge_sort<T: Ord>(arr: &mut Vec<T>) {
-    unimplemented!();
+#![allow(dead_code)]
+
+pub fn merge_sort<T: Ord + Copy>(arr: &mut [T]) {
+    self::top_down::merge_sort(arr);
 }
 
 mod top_down {
-    pub fn merge_sort<T: Ord>(arr: &mut Vec<T>) {
-        unimplemented!();
+    use super::merge::merge;
+
+    pub fn merge_sort<T: Ord + Copy>(arr: &mut [T]) {
+        fn merge_sort_bound<T: Ord + Copy>(arr: &mut [T], low: usize, high: usize) {
+            if low == high || low + 1 == high || high < low {
+                return;
+            }
+
+            let mid = (low + high) / 2;
+
+            merge_sort_bound(arr, low, mid);
+            merge_sort_bound(arr, mid, high);
+
+            merge(arr, low, mid, high);
+        }
+
+        merge_sort_bound(arr, 0, arr.len());
     }
 
     crate::test_sort!(merge_sort);
 }
 
 mod bottom_up {
-    pub fn merge_sort<T: Ord>(arr: &mut Vec<T>) {
-        unimplemented!();
+    use std::cmp::min;
+    use super::merge::merge;
+
+    pub fn merge_sort<T: Ord + Copy>(arr: &mut [T]) {
+        let len = arr.len();
+        let mut group_size = 2;
+
+        if len < group_size {
+            merge(arr, 0, len / 2, len);
+            return;
+        }
+
+        while group_size <= len {
+            let group_count = {
+                if len % group_size == 0 {
+                    len / group_size
+                } else {
+                    len / group_size + 1
+                }
+            };
+
+            for group in 0..group_count {
+                let low = group_size * group;
+                let mid = min(low + group_size / 2, len);
+                let high = min(low + group_size, len);
+
+                merge(arr, low, mid, high);
+            }
+
+            if group_count == 2 {
+                merge(arr, 0, group_size, len);
+            }
+
+            group_size *= group_size;
+        }
     }
 
     crate::test_sort!(merge_sort);
 }
 
 mod merge {
-    pub fn merge<'a, T: Ord>(left: &'a Vec<T>, right: &'a Vec<T>) -> Vec<&'a T> {
-        assert!(left.is_sorted());
-        assert!(right.is_sorted());
+    pub fn merge<T: Ord + Copy>(arr: &mut [T], low: usize, mid: usize, high: usize) {
+        assert!(arr[low..mid].is_sorted());
+        assert!(arr[mid..high].is_sorted());
 
-        let mut res = vec![];
+        let left = &arr[low..mid].iter().copied().collect::<Vec<T>>();
+        let right = &arr[mid..high].iter().copied().collect::<Vec<T>>();
 
         let mut li = 0;
         let mut ri = 0;
 
         while li < left.len() && ri < right.len() {
-            res.push({
-                if left[li] <= right[ri] {
-                    li += 1;
-                    &left[li - 1]
-                } else {
-                    ri += 1;
-                    &right[ri - 1]
-                }
-            });
+            if left[li] <= right[ri] {
+                arr[low + li + ri] = left[li];
+                li += 1;
+            } else {
+                arr[low + li + ri] = right[ri];
+                ri += 1;
+            }
         }
 
         while li < left.len() {
-            res.push(&left[li]);
+            arr[low + li + ri] = left[li];
             li += 1;
         }
 
         while ri < right.len() {
-            res.push(&right[ri]);
+            arr[low + li + ri] = right[ri];
             ri += 1;
         }
-
-        res
     }
 
     macro_rules! merge_tests {
@@ -62,15 +109,14 @@ mod merge {
                 $(
                     #[test]
                     fn $name() {
-                        let (left, right) = $value;
-                        let mut res = left
-                                .iter()
-                                .chain(right.iter())
-                                .collect::<Vec<&u32>>();
+                        let mut arr = $value;
+                        let mut res = arr.clone();
 
                         res.sort_unstable();
 
-                        assert_eq!(merge(&left, &right), res);
+                        merge(&mut arr, 0, $value.len() / 2, $value.len());
+
+                        assert_eq!(arr, res);
                     }
                 )*
             }
@@ -78,15 +124,15 @@ mod merge {
     }
 
     merge_tests! {
-        empty: (&vec![], &vec![]),
-        equaly_long: (&vec![1, 3, 5], &vec![2, 4, 6]),
-        large_values: (&vec![3, 5, 3001312], &vec![2, 6, 1381242]),
-        only_large_values: (&vec![321312, 11512522, 321421421], &vec![6414, 215912, 414342]),
-        sorted: (&vec![1, 2, 3], &vec![4, 5, 6]),
-        only_right: (&vec![], &vec![1, 2, 3, 4]),
-        only_left: (&vec![32, 51, 315], &vec![]),
-        unequal_amount: (&vec![2, 32, 51, 214, 318, 2412], &vec![0, 21431]),
-        wrapped_by_left: (&vec![0, 10], &vec![1, 2, 3]),
-        wrapped_by_right: (&vec![1, 2, 3], &vec![0, 10]),
+        empty: [] as [u32; 0],
+        single: [1],
+        equaly_long: [1, 3, 5, 2, 4, 6],
+        large_values: [3, 5, 3001312, 2, 6, 1381242],
+        only_large_values: [321312, 11512522, 321421421, 6414, 215912, 414342],
+        sorted: [1, 2, 3, 4, 5, 6],
+        unequal_amount: [2, 32, 51, 214, 318, 2412, 21431],
+        wrapped_by_left: [0, 10, 1, 2, 3],
+        wrapped_by_right: [1, 2, 0, 3, 10],
+        strings: ["d", "c"],
     }
 }
