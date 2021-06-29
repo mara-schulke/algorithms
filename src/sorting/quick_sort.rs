@@ -1,29 +1,36 @@
-pub fn quick_sort(arr: &mut [u8]) {
-    qs(arr, 0, (arr.len() - 1) as isize);
+pub fn quick_sort<T: Ord>(arr: &mut [T]) {
+    quick_sort_bound(arr, 0, arr.len() as isize - 1);
 }
 
-fn qs(arr: &mut [u8], lower: isize, upper: isize) {
-    if upper > lower {
-        let pivot = partition(arr, lower, upper);
-
-        qs(arr, lower, pivot - 1);
-        qs(arr, pivot + 1, upper);
+fn quick_sort_bound<T: Ord>(arr: &mut [T], low: isize, high: isize) {
+    if high <= low {
+        return;
     }
+
+    let pivot = partition(arr, low, high);
+
+    quick_sort_bound(arr, low, pivot - 1);
+    quick_sort_bound(arr, pivot + 1, high);
 }
 
-fn partition(arr: &mut [u8], lower: isize, upper: isize) -> isize {
-    let pivot = arr[upper as usize];
+fn partition<T: Ord>(arr: &mut [T], low: isize, high: isize) -> isize {
+    let pivot = high;
 
-    let mut i = lower - 1;
-    for j in lower..upper {
-        if arr[j as usize] <= pivot {
+    let mut i = low - 1;
+
+    for j in low..high {
+        if arr[j as usize] <= arr[pivot as usize] {
             i += 1;
 
             arr.swap(i as usize, j as usize);
         }
     }
 
-    arr.swap((i + 1) as usize, upper as usize);
+    i += 1;
 
-    i + 1
+    arr.swap(i as usize, pivot as usize);
+
+    i
 }
+
+crate::test_sort!(quick_sort);
