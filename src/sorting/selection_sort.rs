@@ -1,17 +1,14 @@
-pub fn selection_sort(arr: &mut [u8]) {
-    for i in 0..arr.len() - 1 {
-        let mut index_of_minimum: usize = 0;
+pub fn selection_sort<T: Ord>(arr: &mut [T]) {
+    for unsorted in 0..arr.len() {
+        let min = arr[unsorted..]
+            .iter()
+            .enumerate()
+            .min_by_key(|i| i.1)
+            .map(|(i, _)| i + unsorted)
+            .unwrap();
 
-        for j in i..arr.len() {
-            if arr[j] < arr[index_of_minimum] {
-                index_of_minimum = j;
-            }
-        }
-
-        if index_of_minimum != i {
-            let temp = arr[index_of_minimum];
-            arr[index_of_minimum] = arr[i];
-            arr[i] = temp;
-        }
+        arr.swap(unsorted, min);
     }
 }
+
+crate::test_sort!(selection_sort);
